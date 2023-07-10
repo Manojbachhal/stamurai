@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 interface Task {
@@ -8,26 +9,46 @@ interface Task {
 
 interface TasksProps {
   task: Task;
-  index: Number;
+  index: number;
+  update: (index: number) => void;
+  deleteTask: (index: number) => void;
 }
 
-function Tasks({ task, index }: TasksProps) {
+function Tasks({ task, index, update, deleteTask }: TasksProps) {
+  const handleUpdate = () => {
+    update(index);
+  };
+  const handleDelete = () => {
+    deleteTask(index);
+  };
   return (
-    <div className="flex justify-evenly mt-6">
-      <h2>{index.toString()}</h2>
-      <h2>{task.name}</h2>
-      <p className={task.status ? "line-through" : ""}>{task.discription}</p>
-      <button
-        className={
-          task.status
-            ? "border-2 rounded p-2 border-red-500"
-            : "border-2 rounded p-2 border-green-500"
-        }
-      >
-        {task.status ? "Pending" : "Completed"}
-      </button>
-      <button className="border-2 rounded p-2 border-red-500"> Remove</button>
-    </div>
+    <>
+      <td>{index}</td>
+      <td className={task.status ? "line-through" : ""}>{task.name}</td>
+      <td>
+        <p className={task.status ? "line-through" : ""}>{task.discription}</p>
+      </td>
+      <td>
+        <button
+          className={
+            !task.status
+              ? "border-2 rounded p-2 bg-red-400 w-32 border-red-500"
+              : "border-2 rounded p-2 bg-green-500 w-32 border-green-500"
+          }
+          onClick={handleUpdate}
+        >
+          {!task.status ? "Pending" : "Completed"}
+        </button>
+      </td>
+      <td>
+        <button
+          className="border-2 rounded p-2 bg-red-400 border-red-500"
+          onClick={handleDelete}
+        >
+          Remove
+        </button>
+      </td>
+    </>
   );
 }
 

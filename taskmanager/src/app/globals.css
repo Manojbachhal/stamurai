@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family:'Courier New', Courier, monospace;
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 15px
 }
+/* *{
+  font-family:'Courier New', Courier, monospace;
+} */
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
