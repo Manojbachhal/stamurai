@@ -2,13 +2,14 @@ import { observable, action, makeObservable } from "mobx";
 import { useStaticRendering } from "mobx-react-lite";
 
 const isServer = typeof window === "undefined";
-// eslint-disable-next-line react-hooks/rules-of-hooks
 useStaticRendering(isServer);
 
 export interface Task {
   name: string;
-  discription: string;
+  description: string;
   status: boolean;
+  createdAt: string;
+  completedAt: string;
 }
 
 export class DataStore {
@@ -35,6 +36,11 @@ export class DataStore {
   }
   update(index: number) {
     this.Tasks[index].status = !this.Tasks[index].status;
+    if (this.Tasks[index].status) {
+      this.Tasks[index].completedAt = new Date().toLocaleString();
+    } else {
+      this.Tasks[index].completedAt = "";
+    }
 
     this.persistTasks();
   }
