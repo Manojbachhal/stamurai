@@ -18,7 +18,7 @@ interface TasksProps {
 function Tasktable({ tasks, update, deleteTask, handlePopup }: TasksProps) {
   return (
     <div
-      className="overflow-x-scroll p- mt-10 w-11/12 m-auto "
+      className="overflow-x-scroll p- mt-10 w-11/12 m-auto text-center"
       style={{ border: "2px solid #80808040", borderRadius: "5px" }}
     >
       <table className="min-w-full">
