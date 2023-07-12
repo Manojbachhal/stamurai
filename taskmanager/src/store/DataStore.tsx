@@ -1,8 +1,8 @@
 import { observable, action, makeObservable } from "mobx";
 import { useStaticRendering } from "mobx-react-lite";
 
-const isServer = typeof window === "undefined";
-useStaticRendering(isServer);
+// const isServer = typeof window === "undefined";
+// useStaticRendering(isServer);
 
 export interface Task {
   name: string;
